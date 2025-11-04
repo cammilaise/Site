@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabor Caseiro - Hamburgueria Artesanal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-area">
+                    <img src="LOGO 4.png" alt="Sabor Caseiro" class="logo-img">
+                </div>
+                <h1>Sabor Caseiro</h1>
+            </div>
+
+            <nav class="menu">
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#cardapio">Cardápio</a></li>
+                    <li><a href="#promocoes">Promoções</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button class="btn btn-pedido" id="btn-abrir-carrinho">
+                    🛒 Carrinho (<span id="contador-carrinho">0</span>)
+                </button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="floating-elements" id="floatingElements"></div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">O Sabor de outro mundo</h1>
+                <p class="hero-subtitle">Hamburgueres 100% artesanais com ingredientes selecionados, molhos
+                    exclusivos e o verdadeiro sabor da churrasqueira. Experimente a diferença!</p>
+                <div class="hero-buttons">
+                    <a href="#cardapio" class="btn btn-primary">Ver Cardápio</a>
+                    <a href="#cardapio" class="btn btn-secondary">Fazer Pedido</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="SABORCASEIRO.png" alt="Hamburguer Artesanal" class="burger-img floating">
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE PROMOÇÕES ANTES DO CARDÁPIO -->
+    <section class="promocoes" id="promocoes">
+        <div class="container">
+            <h2 class="section-title">🔥 Promoções Imperdíveis!</h2>
+            <p class="section-subtitle">Aproveite nossas ofertas especiais por tempo limitado</p>
+
+            <div class="promocao-grid">
+                <div class="promocao-card card-destaque">
+                    <div class="tag-desconto">30% OFF</div>
+                    <img src="como familia + refri 2l.png" alt="Combo Família" class="promocao-img">
+                    <h3 class="promocao-title">Combo Família Turbinado</h3>
+                    <p class="promocao-description">4 Burgers Clássicos, 2 porções de batata frita especial e 1 refri 2L. Perfeito para o fim de semana!</p>
+                    <div class="promocao-precos">
+                        <span class="preco-antigo">De R$ 120,00</span>
+                        <span class="preco-novo">Por R$ 84,00</span>
+                    </div>
+                    <button class="btn btn-promocao" onclick="abrirModal(26)">Eu quero essa oferta!</button>
+                </div>
+
+                <div class="promocao-card">
+                    <div class="tag-desconto">25% OFF</div>
+                    <img src="meu combo artesanal + refri 2 l.png" alt="Meu Combo" class="promocao-img">
+                    <h3 class="promocao-title">Meu Combo Artesanal</h3>
+                    <p class="promocao-description">Combo perfeito para 1 pessoa: 1 hambúrguer artesanal + fritas + refrigerante 200ml</p>
+                    <div class="promocao-precos">
+                        <span class="preco-antigo">De R$ 52,90</span>
+                        <span class="preco-novo">Por R$ 39,90</span>
+                    </div>
+                    <button class="btn btn-promocao" onclick="abrirModal(24)">Aproveitar</button>
+                </div>
+
+                <div class="promocao-card">
+                    <div class="tag-desconto">40% OFF</div>
+                    <img src="bacon chedarr + refri 200 ml.png" alt="Burger da Semana" class="promocao-img">
+                    <h3 class="promocao-title">Combo Bacon Cheddar</h3>
+                    <p class="promocao-description">Bacon Cheddar + Fritas + Refri 200ml. O combo mais pedido da casa com desconto especial!</p>
+                    <div class="promocao-precos">
+                        <span class="preco-antigo">De R$ 39,90</span>
+                        <span class="preco-novo">Por R$ 23,90</span>
+                    </div>
+                    <button class="btn btn-promocao" onclick="abrirModal(18)">Aproveitar</button>
+                </div>
+            </div>
+
+            <p class="aviso-promocao">*Promoções válidas apenas para pedidos feitos online e podem ser alteradas sem aviso prévio.</p>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DO CARDÁPIO -->
+    <section class="cardapio" id="cardapio">
+        <div class="container">
+            <h2 class="section-title">Nosso Cardápio</h2>
+            <p class="section-subtitle">Descubra nossa seleção de hambúrgueres artesanais preparados com ingredientes frescos e selecionados</p>
+            
+            <!-- Filtros do Cardápio -->
+            <div class="filtros-cardapio">
+                <button class="filtro-btn active" data-categoria="todos">Todos</button>
+                <button class="filtro-btn" data-categoria="novidade2024">Novidade 2024</button>
+                <button class="filtro-btn" data-categoria="baratissimos">Baratíssimos</button>
+                <button class="filtro-btn" data-categoria="artesanais">Artesanais</button>
+                <button class="filtro-btn" data-categoria="combos">Combos</button>
+                <button class="filtro-btn" data-categoria="porcoes">Porções</button>
+                <button class="filtro-btn" data-categoria="bebidas">Bebidas</button>
+                <button class="filtro-btn" data-categoria="saches">Sachês</button>
+                <button class="filtro-btn" data-categoria="dianamorados">Dia dos Namorados</button>
+            </div>
+
+            <!-- Grid do Cardápio - TODOS OS 51 PRODUTOS -->
+            <div class="grid-cardapio">
+                <!-- NOVIDADE 2024 -->
+                <div class="card-hamburguer" data-categoria="novidade2024">
+                    <img src="FRANGO COM CHEDDAR.jpg" alt="Frango com Cheddar" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">NOVIDADE 2024</span>
+                        <h3 class="card-nome">Frango com Cheddar</h3>
+                        <p class="card-descricao">Frango grelhado, cheddar cremoso, alface, tomate e maionese caseira</p>
+                        <div class="card-preco">R$ 46,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(1)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="novidade2024">
+                    <img src="FRANGO COM CATUPIRY.png" alt="Frango com Catupiry" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">NOVIDADE 2024</span>
+                        <h3 class="card-nome">Frango com Catupiry</h3>
+                        <p class="card-descricao">Frango grelhado, catupiry cremoso, alface e tomate</p>
+                        <div class="card-preco">R$ 46,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(2)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <!-- BARATÍSSIMOS -->
+                <div class="card-hamburguer" data-categoria="baratissimos">
+                    <img src="magnifico queijo.jpeg" alt="Magnifico Queijo" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">BARATÍSSIMOS</span>
+                        <h3 class="card-nome">Magnifico Queijo</h3>
+                        <p class="card-descricao">Hambúrguer artesanal, queijo, alface, tomate e maionese</p>
+                        <div class="card-preco">R$ 32,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(3)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="baratissimos">
+                    <img src="magnifico cheddar.jpeg" alt="Magnífico Cheddar" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">BARATÍSSIMOS</span>
+                        <h3 class="card-nome">Magnífico Cheddar</h3>
+                        <p class="card-descricao">Hambúrguer artesanal, cheddar, alface, tomate e maionese</p>
+                        <div class="card-preco">R$ 34,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(4)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <!-- ARTESANAIS -->
+                <div class="card-hamburguer" data-categoria="artesanais">
+                    <img src="cheddar sticker.png" alt="Cheddar Sticker" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">ARTESANAIS</span>
+                        <h3 class="card-nome">Cheddar Sticker</h3>
+                        <p class="card-descricao">Hambúrguer 140g, cheddar, bacon, cebola caramelizada</p>
+                        <div class="card-preco">R$ 42,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(5)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="artesanais">
+                    <img src="4 queijos.png" alt="4 Queijos" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">ARTESANAIS</span>
+                        <h3 class="card-nome">4 Queijos</h3>
+                        <p class="card-descricao">Hambúrguer 140g, mussarela, prato, parmesão, gorgonzola</p>
+                        <div class="card-preco">R$ 42,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(6)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="artesanais">
+                    <img src="bacon cheddar.png" alt="Bacon Cheddar" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">ARTESANAIS</span>
+                        <h3 class="card-nome">Bacon Cheddar</h3>
+                        <p class="card-descricao">Hambúrguer 140g, cheddar, bacon, alface, tomate</p>
+                        <div class="card-preco">R$ 37,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(7)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="artesanais">
+                    <img src="costelinha barbecue.png" alt="Costelinha Barbecue" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">ARTESANAIS</span>
+                        <h3 class="card-nome">Costelinha Barbecue</h3>
+                        <p class="card-descricao">Hambúrguer 140g, molho barbecue, costelinha, cebola caramelizada</p>
+                        <div class="card-preco">R$ 42,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(8)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="artesanais">
+                    <img src="(barato do dia) cheddar duplo rustico + refri 200 ml.png" alt="Duplo Cheddar Bacon" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">ARTESANAIS</span>
+                        <h3 class="card-nome">Duplo Cheddar Bacon</h3>
+                        <p class="card-descricao">2 hambúrgueres 140g, duplo cheddar, bacon, alface</p>
+                        <div class="card-preco">R$ 44,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(9)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="artesanais">
+                    <img src="kids.png" alt="Kids" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">ARTESANAIS</span>
+                        <h3 class="card-nome">Kids</h3>
+                        <p class="card-descricao">Hambúrguer 100g, queijo, alface, tomate - perfeito para crianças</p>
+                        <div class="card-preco">R$ 32,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(10)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="artesanais">
+                    <img src="dignissimo cheddar.png" alt="Dignissimo Cheddar" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">ARTESANAIS</span>
+                        <h3 class="card-nome">Dignissimo Cheddar</h3>
+                        <p class="card-descricao">Hambúrguer 160g, cheddar premium, bacon, onion rings</p>
+                        <div class="card-preco">R$ 46,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(11)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="artesanais">
+                    <img src="esplendido chesse.png" alt="Esplêndido Cheese" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">ARTESANAIS</span>
+                        <h3 class="card-nome">Esplêndido Cheese</h3>
+                        <p class="card-descricao">Triplo hambúrguer 120g, triplo cream cheese, bacon</p>
+                        <div class="card-preco">R$ 46,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(12)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="artesanais">
+                    <img src="onion ring chesse.png" alt="Onion Rings Cheese" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">ARTESANAIS</span>
+                        <h3 class="card-nome">Onion Rings Cheese</h3>
+                        <p class="card-descricao">Hambúrguer 140g, queijo, onion rings, molho especial</p>
+                        <div class="card-preco">R$ 44,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(13)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="artesanais">
+                    <img src="classico.png" alt="Classico" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">ARTESANAIS</span>
+                        <h3 class="card-nome">Classico</h3>
+                        <p class="card-descricao">Hambúrguer 140g, queijo, alface, tomate, maionese</p>
+                        <div class="card-preco">R$ 38,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(14)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="artesanais">
+                    <img src="cheddar duplo rustico.png" alt="Cheddar duplo Rústico" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">ARTESANAIS</span>
+                        <h3 class="card-nome">Cheddar duplo Rústico</h3>
+                        <p class="card-descricao">2 hambúrgueres 140g, duplo cheddar, molho rústico</p>
+                        <div class="card-preco">R$ 49,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(15)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="artesanais">
+                    <img src="romeu e julieta.png" alt="Romeu e Julieta" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">ARTESANAIS</span>
+                        <h3 class="card-nome">Romeu e Julieta</h3>
+                        <p class="card-descricao">Hambúrguer 140g, queijo coalho, goiabada, combinação doce e salgada</p>
+                        <div class="card-preco">R$ 42,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(16)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="artesanais">
+                    <img src="tradicional bacon e ovo.png" alt="Tradicional bacon e ovo" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">ARTESANAIS</span>
+                        <h3 class="card-nome">Tradicional bacon e ovo</h3>
+                        <p class="card-descricao">Hambúrguer 140g, bacon, ovo, queijo, alface, tomate</p>
+                        <div class="card-preco">R$ 37,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(17)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <!-- COMBOS -->
+                <div class="card-hamburguer" data-categoria="combos">
+                    <img src="bacon chedarr + refri 200 ml.png" alt="Bacon Cheddar + Refri 200ml" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">COMBOS</span>
+                        <h3 class="card-nome">Bacon Cheddar + Refri 200ml</h3>
+                        <p class="card-descricao">1 Bacon Cheddar + Fritas + Coca-Cola 200ml</p>
+                        <div class="card-preco">R$ 39,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(18)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="combos">
+                    <img src="hexa combo.png" alt="Hexa Combo + Refrigerante 2l" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">COMBOS</span>
+                        <h3 class="card-nome">Hexa Combo + Refrigerante 2l</h3>
+                        <p class="card-descricao">6 hambúrgueres artesanais + 2 porções de fritas + Refri 2L</p>
+                        <div class="card-preco">R$ 155,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(19)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="combos">
+                    <img src="todo meu.png" alt="Todo meu + Refri 200ml" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">COMBOS</span>
+                        <h3 class="card-nome">Todo meu + Refri 200ml</h3>
+                        <p class="card-descricao">1 hambúrguer artesanal + fritas + refrigerante 200ml</p>
+                        <div class="card-preco">R$ 54,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(20)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="combos">
+                    <img src="pesadao mais refri 2 l.png" alt="Pesadão + Refrigerante 2l" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">COMBOS</span>
+                        <h3 class="card-nome">Pesadão + Refrigerante 2l</h3>
+                        <p class="card-descricao">3 X-Egg Burgers + fritas + refrigerante 2L</p>
+                        <div class="card-preco">R$ 119,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(21)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="combos">
+                    <img src="como familia + refri 2l.png" alt="Combo Família + Kuat 2l" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">COMBOS</span>
+                        <h3 class="card-nome">Combo Família + Kuat 2l</h3>
+                        <p class="card-descricao">5 hambúrgueres suculentos + fritas + Kuat 2L</p>
+                        <div class="card-preco">R$ 136,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(22)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="combos">
+                    <img src="pesado mais refri 2 l.png" alt="Pesado + Refrigerante 2l" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">COMBOS</span>
+                        <h3 class="card-nome">Pesado + Refrigerante 2l</h3>
+                        <p class="card-descricao">2 X-Egg Burguers + fritas + Kuat 2L</p>
+                        <div class="card-preco">R$ 97,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(23)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="combos">
+                    <img src="meu combo artesanal + refri 2 l.png" alt="Meu combo artesanal + Refrigerante 200ml" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">COMBOS</span>
+                        <h3 class="card-nome">Meu combo artesanal + Refrigerante 200ml</h3>
+                        <p class="card-descricao">1 hambúrguer artesanal + fritas + refrigerante 200ml</p>
+                        <div class="card-preco">R$ 52,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(24)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="combos">
+                    <img src="quarteto combo.jpg" alt="Quarteto + Refrigerante 2l" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">COMBOS</span>
+                        <h3 class="card-nome">Quarteto + Refrigerante 2l</h3>
+                        <p class="card-descricao">4 hambúrgueres suculentos + fritas + refrigerante 2L</p>
+                        <div class="card-preco">R$ 127,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(25)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="combos">
+                    <img src="como familia + refri 2l.png" alt="Combo Família + Refrigerante 2l" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">COMBOS</span>
+                        <h3 class="card-nome">Combo Família + Refrigerante 2l</h3>
+                        <p class="card-descricao">5 hambúrgueres suculentos + fritas + refrigerante 2L</p>
+                        <div class="card-preco">R$ 146,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(26)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="combos">
+                    <img src="combo maravilha + refrigerante 1l.png" alt="Combo Maravilha + Refrigerante 1l" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">COMBOS</span>
+                        <h3 class="card-nome">Combo Maravilha + Refrigerante 1l</h3>
+                        <p class="card-descricao">2 hambúrgueres artesanais + fritas com cheddar + cubos de frango + anéis de cebola + refrigerante 1L</p>
+                        <div class="card-preco">R$ 99,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(27)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="combos">
+                    <img src="mega combo.jpeg" alt="Mega Combo Artesanal + Refrigerante 2l" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">COMBOS</span>
+                        <h3 class="card-nome">Mega Combo Artesanal + Refrigerante 2l</h3>
+                        <p class="card-descricao">3 hambúrgueres artesanais 120g + fritas + refrigerante 2L</p>
+                        <div class="card-preco">R$ 149,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(28)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <!-- PORÇÕES -->
+                <div class="card-hamburguer" data-categoria="porcoes">
+                    <img src="FRITAS INDIVIDUAL.png" alt="Fritas" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">PORÇÕES</span>
+                        <h3 class="card-nome">Fritas</h3>
+                        <p class="card-descricao">Porção de batatas fritas crocantes e douradas</p>
+                        <div class="card-preco">R$ 33,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(29)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="porcoes">
+                    <img src="fritas e cheddar certo.jpeg" alt="Fritas Queijo e Bacon" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">PORÇÕES</span>
+                        <h3 class="card-nome">Fritas Queijo e Bacon</h3>
+                        <p class="card-descricao">Fritas cobertas com queijo derretido e bacon crocante</p>
+                        <div class="card-preco">R$ 39,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(30)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="porcoes">
+                    <img src="especial caseiro.png" alt="Especial caseiro" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">PORÇÕES</span>
+                        <h3 class="card-nome">Especial caseiro</h3>
+                        <p class="card-descricao">Contra filé acebolado + lombo acebolado - serve até 5 pessoas</p>
+                        <div class="card-preco">R$ 129,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(31)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="porcoes">
+                    <img src="onion ring cheddar e bacon.jpeg" alt="Cebolas empanadas cheddar e bacon" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">PORÇÕES</span>
+                        <h3 class="card-nome">Cebolas empanadas cheddar e bacon</h3>
+                        <p class="card-descricao">Anéis de cebola empanados com cheddar e bacon</p>
+                        <div class="card-preco">R$ 40,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(32)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="porcoes">
+                    <img src="fritas e lombo.jpeg" alt="Lombo com fritas" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">PORÇÕES</span>
+                        <h3 class="card-nome">Lombo com fritas</h3>
+                        <p class="card-descricao">Lombo suculento acebolado acompanhado de fritas</p>
+                        <div class="card-preco">R$ 75,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(33)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="porcoes">
+                    <img src="CONTRA COM FRITAS.png" alt="Contrá filé com fritas" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">PORÇÕES</span>
+                        <h3 class="card-nome">Contrá filé com fritas</h3>
+                        <p class="card-descricao">Contra filé acebolado com fritas crocantes</p>
+                        <div class="card-preco">R$ 87,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(34)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="porcoes">
+                    <img src="Porque as batatas fritas murcham.jpeg" alt="Fritas (caixa pizza 20 cm)" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">PORÇÕES</span>
+                        <h3 class="card-nome">Fritas (caixa pizza 20 cm)</h3>
+                        <p class="card-descricao">Fritas crocantes servidas em caixa de pizza 20cm</p>
+                        <div class="card-preco">R$ 30,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(35)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <!-- PORÇÕES INDIVIDUAIS -->
+                <div class="card-hamburguer" data-categoria="porcoes">
+                    <img src="CUBO DE FRANGO + FRITA CHEDDAR E BACON - Copia.png" alt="Cubos de frango empanado + Fritas queijo e bacon" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">PORÇÕES INDIVIDUAIS</span>
+                        <h3 class="card-nome">Cubos de frango empanado + Fritas queijo e bacon</h3>
+                        <p class="card-descricao">Cubos de frango empanados com fritas, queijo e bacon</p>
+                        <div class="card-preco">R$ 33,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(36)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="porcoes">
+                    <img src="CUBO DE FRANGO EMPANADO - Copia.png" alt="Cubos de frango empanado" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">PORÇÕES INDIVIDUAIS</span>
+                        <h3 class="card-nome">Cubos de frango empanado</h3>
+                        <p class="card-descricao">Cubos de frango empanados crocantes</p>
+                        <div class="card-preco">R$ 29,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(37)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="porcoes">
+                    <img src="CUBO DE FRANGO + FRITA CHEDDAR E BACON.png" alt="Cubos de frango empanados + fritas, cheddar e bacon" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">PORÇÕES INDIVIDUAIS</span>
+                        <h3 class="card-nome">Cubos de frango empanados + fritas, cheddar e bacon</h3>
+                        <p class="card-descricao">Cubos de frango empanados com fritas, cheddar e bacon</p>
+                        <div class="card-preco">R$ 29,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(38)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="porcoes">
+                    <img src="FRITAS INDIVIDUAL.png" alt="Fritas individual" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">PORÇÕES INDIVIDUAIS</span>
+                        <h3 class="card-nome">Fritas individual</h3>
+                        <p class="card-descricao">Porção individual de batatas fritas</p>
+                        <div class="card-preco">R$ 11,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(39)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="porcoes">
+                    <img src="ONION RING TRADICIONAL.png" alt="Onion's rings" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">PORÇÕES INDIVIDUAIS</span>
+                        <h3 class="card-nome">Onion's rings</h3>
+                        <p class="card-descricao">Anéis de cebola empanados crocantes</p>
+                        <div class="card-preco">R$ 18,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(40)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <!-- BEBIDAS -->
+                <div class="card-hamburguer" data-categoria="bebidas">
+                    <img src="coca-cola200ml.jpeg" alt="Coca Cola 200ml" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">BEBIDAS</span>
+                        <h3 class="card-nome">Coca Cola 200ml</h3>
+                        <p class="card-descricao">Refrigerante Coca-Cola 200ml</p>
+                        <div class="card-preco">R$ 4,00</div>
+                        <button class="btn-pedir" onclick="abrirModal(41)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="bebidas">
+                    <img src="GASEOSA COCA COLA ORIGINAL  600ML.jpeg" alt="Coca-Cola 600ml" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">BEBIDAS</span>
+                        <h3 class="card-nome">Coca-Cola 600ml</h3>
+                        <p class="card-descricao">Refrigerante Coca-Cola 600ml</p>
+                        <div class="card-preco">R$ 9,00</div>
+                        <button class="btn-pedir" onclick="abrirModal(42)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="bebidas">
+                    <img src="suco tial manga.jpeg" alt="Suco Tial Néctar Manga 330ml" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">BEBIDAS</span>
+                        <h3 class="card-nome">Suco Tial Néctar Manga 330ml</h3>
+                        <p class="card-descricao">Suco de manga Tial 330ml</p>
+                        <div class="card-preco">R$ 7,00</div>
+                        <button class="btn-pedir" onclick="abrirModal(43)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="bebidas">
+                    <img src="suco tial uva.jpeg" alt="Suco Néctar de Uva Tial 330ml" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">BEBIDAS</span>
+                        <h3 class="card-nome">Suco Néctar de Uva Tial 330ml</h3>
+                        <p class="card-descricao">Suco de uva Tial 330ml</p>
+                        <div class="card-preco">R$ 7,00</div>
+                        <button class="btn-pedir" onclick="abrirModal(44)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="bebidas">
+                    <img src="coca cola zero 600ml.jpeg" alt="Coca Cola Zero 600ml" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">BEBIDAS</span>
+                        <h3 class="card-nome">Coca Cola Zero 600ml</h3>
+                        <p class="card-descricao">Refrigerante Coca-Cola Zero 600ml</p>
+                        <div class="card-preco">R$ 9,00</div>
+                        <button class="btn-pedir" onclick="abrirModal(45)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="bebidas">
+                    <img src="coca lata.jpeg" alt="Coca-Cola Original 350ml" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">BEBIDAS</span>
+                        <h3 class="card-nome">Coca-Cola Original 350ml</h3>
+                        <p class="card-descricao">Coca-Cola em lata 350ml</p>
+                        <div class="card-preco">R$ 8,00</div>
+                        <button class="btn-pedir" onclick="abrirModal(46)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="bebidas">
+                    <img src="refrigerante sprite original.jpeg" alt="Sprite Original 350ml" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">BEBIDAS</span>
+                        <h3 class="card-nome">Sprite Original 350ml</h3>
+                        <p class="card-descricao">Sprite em lata 350ml</p>
+                        <div class="card-preco">R$ 8,00</div>
+                        <button class="btn-pedir" onclick="abrirModal(47)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <!-- SACHÊS -->
+                <div class="card-hamburguer" data-categoria="saches">
+                    <img src="KETCHUP.png" alt="Catchup" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">SACHÊS</span>
+                        <h3 class="card-nome">Catchup</h3>
+                        <p class="card-descricao">Sachê de catchup 20g</p>
+                        <div class="card-preco">R$ 0,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(48)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="saches">
+                    <img src="MAIONESE VERDE.png" alt="Maionese Verde" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">SACHÊS</span>
+                        <h3 class="card-nome">Maionese Verde</h3>
+                        <p class="card-descricao">Maionese verde artesanal 20g</p>
+                        <div class="card-preco">R$ 4,00</div>
+                        <button class="btn-pedir" onclick="abrirModal(49)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <div class="card-hamburguer" data-categoria="saches">
+                    <img src="maionese.jpeg" alt="Maionese" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">SACHÊS</span>
+                        <h3 class="card-nome">Maionese</h3>
+                        <p class="card-descricao">Sachê de maionese tradicional</p>
+                        <div class="card-preco">R$ 0,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(50)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+                <!-- DIA DOS NAMORADOS -->
+                <div class="card-hamburguer" data-categoria="dianamorados">
+                    <img src="bacon chedarr + refri 200 ml.png" alt="2 Bacon Cheddar + 2 batatas + Coca Cola 600ml" class="card-imagem">
+                    <div class="card-info">
+                        <span class="card-categoria">DIA DOS NAMORADOS</span>
+                        <h3 class="card-nome">2 Bacon Cheddar + 2 batatas + Coca Cola 600ml</h3>
+                        <p class="card-descricao">Combo especial para casais - 2 hambúrgueres + 2 porções + refrigerante</p>
+                        <div class="card-preco">R$ 82,90</div>
+                        <button class="btn-pedir" onclick="abrirModal(51)">ADICIONAR AO CARRINHO</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="sobre" id="sobre">
+        <div class="container sobre-container">
+            <div class="sobre-image">
+                <img src="chef preparando.png" alt="O Chef preparando um hambúrguer artesanal Sabor Caseiro" class="sobre-img">
+            </div>
+
+            <div class="sobre-content">
+                <h2 class="section-title">Nossa História: Paixão pelo Sabor Caseiro</h2>
+                <p class="sobre-text">
+                    No <b>Sabor Caseiro</b>, acreditamos que a comida de verdade deve nos trazer conforto e alegria.
+                    Nascemos do desejo de resgatar o <b>verdadeiro sabor da churrasqueira</b> em um hambúrguer 100% artesanal.
+                </p>
+                <p class="sobre-text">
+                    Nossos ingredientes são <b>selecionados com rigor</b>: carne fresca moída diariamente, pães macios feitos por padeiros locais e molhos exclusivos, criados com receitas de família.
+                </p>
+                <p class="sobre-text destaque-missao">
+                    <b>Nossa Missão:</b> Servir o melhor hambúrguer artesanal, com paixão em cada detalhe, e proporcionar uma experiência que você só encontra aqui, com gosto de feito em casa.
+                </p>
+                <a href="#cardapio" class="btn btn-primary btn-sobre">Ver Cardápio Completo</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="contato">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sabor Caseiro</h3>
+                    <p>Hamburgueria Artesanal</p>
+                    <p>🍔 O verdadeiro sabor caseiro em cada mordida!</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p>📞 (31) 99429-3091</p>
+                    <p>📍 Endereço: Rua Principal, 123 - Centro</p>
+                    <p>🕒 Horário: 18h às 23h</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">📷 Instagram</a>
+                        <a href="#" class="social-icon">📘 Facebook</a>
+                        <a href="https://wa.me/5531994293091" class="social-icon">💬 WhatsApp</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Formas de Pagamento</h4>
+                    <p>💳 Cartão • 📱 PIX • 💵 Dinheiro</p>
+                    <div class="pagamento-info">
+                        <p>🛵 Delivery Disponível</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Sabor Caseiro - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL DO PRODUTO -->
+    <div id="modal-produto" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <img id="modal-imagem" src="" alt="" class="modal-imagem">
+                <span id="modal-categoria" class="modal-categoria"></span>
+                <h2 id="modal-nome" class="modal-nome"></h2>
+                <p id="modal-descricao" class="modal-descricao"></p>
+                <div class="modal-preco-container">
+                    <div id="modal-preco" class="modal-preco"></div>
+                    <div class="quantidade-container">
+                        <button id="decrementar" class="btn-quantidade">-</button>
+                        <span id="quantidade" class="quantidade">1</span>
+                        <button id="incrementar" class="btn-quantidade">+</button>
+                    </div>
+                </div>
+                <button id="btn-pedido-modal" class="btn btn-primary modal-pedido">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DO CARRINHO -->
+    <div id="modal-carrinho" class="modal carrinho-modal">
+        <div class="modal-content">
+            <span class="close-carrinho">&times;</span>
+            <h2>🛒 Seu Carrinho</h2>
+            <div id="itens-carrinho" class="itens-carrinho">
+                <!-- Itens do carrinho serão inseridos aqui via JavaScript -->
+            </div>
+            <div class="carrinho-total">
+                <div class="total-item">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">R$ 0,00</span>
+                </div>
+                <div class="total-item">
+                    <span>Taxa de Entrega:</span>
+                    <span id="taxa-entrega">R$ 5,00</span>
+                </div>
+                <div class="total-item total-geral">
+                    <span>Total:</span>
+                    <span id="total-geral">R$ 0,00</span>
+                </div>
+            </div>
+            
+            <!-- Formulário de Entrega -->
+            <div class="form-entrega">
+                <h3>📋 Informações de Entrega</h3>
+                <div class="form-grid">
+                    <input type="text" id="nome-cliente" placeholder="Seu nome completo *" class="form-input" required>
+                    <input type="tel" id="telefone" placeholder="Telefone com DDD *" class="form-input" required>
+                    <input type="text" id="endereco" placeholder="Endereço completo *" class="form-input" required>
+                    <input type="text" id="cidade" placeholder="Cidade *" class="form-input" required>
+                </div>
+                
+                <div class="forma-pagamento">
+                    <h3>💳 Forma de Pagamento</h3>
+                    <div class="opcoes-pagamento">
+                        <label class="opcao-pagamento">
+                            <input type="radio" name="forma-pagamento" value="cartao">
+                            <span class="checkmark"></span>
+                            <span class="opcao-texto">💳 Cartão</span>
+                        </label>
+                        <label class="opcao-pagamento">
+                            <input type="radio" name="forma-pagamento" value="dinheiro">
+                            <span class="checkmark"></span>
+                            <span class="opcao-texto">💵 Dinheiro</span>
+                        </label>
+                        <label class="opcao-pagamento">
+                            <input type="radio" name="forma-pagamento" value="pix">
+                            <span class="checkmark"></span>
+                            <span class="opcao-texto">📱 PIX</span>
+                        </label>
+                    </div>
+                    <div id="campo-troco" style="display: none;">
+                        <input type="number" id="troco" placeholder="Troco para quanto?" class="form-input">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Botões de Finalização -->
+            <div class="botoes-finalizacao">
+                <button id="btn-pix" class="btn-finalizar btn-pix">
+                    📱 Pagar com PIX
+                </button>
+                <button id="btn-outras-formas" class="btn-finalizar btn-outros">
+                    💳 Outras Formas
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seta Voltar ao Topo -->
+    <button class="seta-voltar-inicio" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ↑
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
